@@ -2,12 +2,13 @@ import requests
 from datetime import datetime, timedelta
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import pandas as pd
 
 #the function of this script is to tell which stocks to trade in
 
 # stocks = ['Apple Inc.', 'Microsoft Corporation', 'Alphabet Inc.', 'Amazon.com, Inc.', 'Facebook, Inc. (Meta Platforms, Inc.)', 'Tesla, Inc.', 'Berkshire Hathaway Inc.', 'Johnson & Johnson', 'JPMorgan Chase & Co.', 'Visa Inc.', 'Procter & Gamble Co.', 'UnitedHealth Group Incorporated', 'Mastercard Incorporated', 'The Home Depot, Inc.', 'NVIDIA Corporation', 'PayPal Holdings, Inc.', 'Intel Corporation', 'Adobe Inc.', 'Netflix, Inc.', 'The Walt Disney Company', 'Cisco Systems, Inc.', 'PepsiCo, Inc.', 'Pfizer Inc.', 'Nike, Inc.', 'Coca-Cola Company', 'Exxon Mobil Corporation']
-
-stocks = ['Bitcoin','Ethereum','Apple','Amazon']
+# stocks = ['Apple Inc.', 'Microsoft Corporation', 'Alphabet Inc.', 'Amazon.com']
+stocks = ['Bitcoin','Ethereum','Solana','Shiba Inu','NVIDIA','MSFT','Facebook','Tesla','Dogecoin']
 # stocks = ['Bitcoin', 'Ethereum', 'Binance Coin', 'Cardano', 'Solana', 'Ripple (XRP)', 'Polkadot', 'Dogecoin', 'Shiba Inu', 'Litecoin', 'Chainlink', 'Uniswap', 'Stellar', 'Polygon (MATIC)', 'Avalanche', 'Terra (LUNA)', 'VeChain', 'Tron', 'Cosmos (ATOM)', 'Tezos', 'Monero', 'Algorand', 'Aave', 'Elrond', 'IOTA', 'Filecoin']
 positive_news = []
 negative_news = []
@@ -15,7 +16,7 @@ normal_news = []
 
 def get_news(api_key, company_name, num_articles=100):
     # Get the date for one day ago
-    start_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    start_date = (datetime.now() - timedelta(days=10)).strftime('%Y-%m-%d')
 
     # News API endpoint
     endpoint = "https://newsapi.org/v2/everything"
@@ -91,6 +92,14 @@ def main():
                 print(f'Hold {company_name}')
         else:
             print(f"No relevant articles found for {company_name}")
+    
+    data = pd.DataFrame(positive_news)
+    data.to_csv("positive_news.csv")
+    data2 = pd.DataFrame(negative_news)
+    data2.to_csv('negative_news.csv')
+    data3 = pd.DataFrame(normal_news)
+    data3.to_csv("normal.csv")
+
 main()
 
 
