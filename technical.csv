@@ -1,0 +1,31 @@
+,0,1,2
+0,NVDA,"Ticker
+NVDA    118.1091
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+NVDA    141863676
+Name: 2025-02-04 00:00:00, dtype: int64"
+1,MSFT,"Ticker
+MSFT    410.869995
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+MSFT    9049861
+Name: 2025-02-04 00:00:00, dtype: int64"
+2,META,"Ticker
+META    703.015015
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+META    7814295
+Name: 2025-02-04 00:00:00, dtype: int64"
+3,TSLA,"Ticker
+TSLA    383.379913
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+TSLA    31269015
+Name: 2025-02-04 00:00:00, dtype: int64"
+4,GOOGL,"Ticker
+GOOGL    204.099899
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+GOOGL    14543995
+Name: 2025-02-04 00:00:00, dtype: int64"
+5,AMZN,"Ticker
+AMZN    241.139999
+Name: 2025-02-04 00:00:00, dtype: float64","Ticker
+AMZN    13617535
+Name: 2025-02-04 00:00:00, dtype: int64"
