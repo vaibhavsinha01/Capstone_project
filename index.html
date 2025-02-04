@@ -133,7 +133,7 @@
         <button class="login-btn">Login</button>
     </div>
     <div class="banner">
-        <h1>LIMITED TIME OFFER 75% OFF ON UNLIMITED PLAN</h1>
+        <h1>AN OPEN SOURCE WEBSITE FOR ANALYSIS AND TRADING</h1>
         <div class="countdown" id="countdown"></div>
     </div>
     <div class="search-bar">
@@ -178,7 +178,7 @@
                 let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((distance % (1000 * 60)) / (1000));
-                document.getElementById("countdown").innerHTML = ${hours}h ${minutes}m ${seconds}s;
+                document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
             }, 1000);
         }
         startCountdown();
