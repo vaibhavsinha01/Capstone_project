@@ -8,7 +8,7 @@ import pandas as pd
 
 # stocks = ['Apple Inc.', 'Microsoft Corporation', 'Alphabet Inc.', 'Amazon.com, Inc.', 'Facebook, Inc. (Meta Platforms, Inc.)', 'Tesla, Inc.', 'Berkshire Hathaway Inc.', 'Johnson & Johnson', 'JPMorgan Chase & Co.', 'Visa Inc.', 'Procter & Gamble Co.', 'UnitedHealth Group Incorporated', 'Mastercard Incorporated', 'The Home Depot, Inc.', 'NVIDIA Corporation', 'PayPal Holdings, Inc.', 'Intel Corporation', 'Adobe Inc.', 'Netflix, Inc.', 'The Walt Disney Company', 'Cisco Systems, Inc.', 'PepsiCo, Inc.', 'Pfizer Inc.', 'Nike, Inc.', 'Coca-Cola Company', 'Exxon Mobil Corporation']
 # stocks = ['Apple Inc.', 'Microsoft Corporation', 'Alphabet Inc.', 'Amazon.com']
-stocks = ['Bitcoin','Ethereum','Solana','Shiba Inu','NVIDIA','MSFT','Facebook','Tesla','Dogecoin']
+stocks = ['Bitcoin','Ethereum','Solana','Shiba Inu','NVIDIA','MSFT','Facebook','Tesla','Dogecoin','Alphabet Inc','Amazon.com']
 # stocks = ['Bitcoin', 'Ethereum', 'Binance Coin', 'Cardano', 'Solana', 'Ripple (XRP)', 'Polkadot', 'Dogecoin', 'Shiba Inu', 'Litecoin', 'Chainlink', 'Uniswap', 'Stellar', 'Polygon (MATIC)', 'Avalanche', 'Terra (LUNA)', 'VeChain', 'Tron', 'Cosmos (ATOM)', 'Tezos', 'Monero', 'Algorand', 'Aave', 'Elrond', 'IOTA', 'Filecoin']
 positive_news = []
 negative_news = []
@@ -84,7 +84,7 @@ def main():
             if sentiment['pos'] > sentiment['neg']*1.5:
                 positive_news.append(text)
                 print(f'Buy {company_name}')
-            elif sentiment['pos'] < sentiment['neg']*1.5:
+            elif sentiment['neg'] < sentiment['pos']*1.5:
                 negative_news.append(text)
                 print(f'Sell {company_name}')
             else:
