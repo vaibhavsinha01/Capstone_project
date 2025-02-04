@@ -3,22 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Stock Analysis Portal</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://wallpapers.com/images/hd/stock-market-drastic-market-movement-baglidta60etpuu7.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: rgb(255, 255, 255);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(123, 141, 213, 0.6);
+            animation: fadeIn 1.5s ease-in-out, navbarMove 3s ease-in-out infinite alternate;
+        }
+        @keyframes navbarMove {
+            0% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+        .navbar a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #ff7214;
+        }
+        .banner {
+            text-align: center;
+            padding: 40px;
+            background: rgba(59, 28, 105, 0.6);
+            animation: slideIn 1.5s ease-in-out, bannerMove 5s ease-in-out infinite alternate;
+        }
+        @keyframes bannerMove {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(10px); }
+        }
+        .banner h1 {
+            font-size: 40px;
+        }
+        .countdown {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+        @keyframes searchBarMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .stock-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .stock-box {
+            background: rgba(43, 1, 140, 0.725);
+            padding: 15px;
+            border-radius: 9px;
+            text-align: center;
+            width: 150px;
+            
+            
+        }
+        @keyframes stockBoxMove {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(10px); }
+        }
+        .stock-box:hover {
+            transform: scale(1.05);
+        }
+        .login-btn {
+            background: #ff6600;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        .login-btn:hover {
+            background-color: #e65c00;
+        }
+        .footer {
+            text-align: left;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 6; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="trading_bot.html">Trading Bot</a>
-        <a href="analysis.html">Analysis</a>
-        <a href="sentiment.html">Sentiment</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
-    <!-- <h1>News</h1>
-    <h2>Positive News</h2>
-    <p id="result1"></p>
-    <h2>Negative News</h2>
-    <p id="result2"></p> -->
+    <div class="navbar">
+        <img src="https://files.oaiusercontent.com/file-LHhZvhMZKLG5uSA2dPvmLr?se=2025-02-04T17%3A35%3A47Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dbac5f25c-706b-4a83-8ee3-ba8725243fbd.webp&sig=TJHRDsjzCxgKTOQJjCSBoqnu3ngGnDUzwF0X7T4EL5o%3D" alt="Italian Trulli" height="100" width="100">
+        <div>
+            <a href="#">HOME</a>
+            <a href="trading_bot.html">TRADING BOT</a>
+            <a href="analysis.html">ANALYSIS</a>
+            <a href="sentiment.html">SENTIMENT</a>
+        </div>
+        <button class="login-btn">Login</button>
+    </div>
+    <div class="banner">
+        <h1>LIMITED TIME OFFER 75% OFF ON UNLIMITED PLAN</h1>
+        <div class="countdown" id="countdown"></div>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search your favorite Indices...">
+    </div>
+    <div class="stock-container">
+        <div class="stock-box">GIFT-NIFTY<br><span style="color: rgb(49, 211, 49);">23,843 ▲</span></div>
+        <div class="stock-box">NIFTY<br><span style="color: rgb(45, 187, 45);">23,739 ▲</span></div>
+        <div class="stock-box">SENSEX<br><span style="color: rgb(51, 182, 51);">78,563 ▲</span></div>
+    </div>
+    <div class="footer">
+        <div class="footer">
+            <p> Sarthak Mishra 23BDS1011
+               <br>
+               <br>
+                 Vaibhav Sinha 23BDS1026
+                 <br>
+                 <br>Om Srivastava 23BDS1006</p>
+        </div>
+        <div class="footer-links">
+            <h2>
+              <a href="contact.html" style="color: orange;">Contact Us</a> | 
+              <a href="about.html" style="color: orange;">About Us</a> | 
+              <a href="about.html" style="color: orange;">Terms of Service</a>
+            </h2>
+        </div>
+        <style>
+            .footer-links {
+                background: rgba(34, 2, 56, 0.8); 
+                padding: 20px;
+                text-align: center;
+                margin-top: -20px;
+            }
+        </style>
+    </div>
+    <script>
+        function startCountdown() {
+            let endTime = new Date().getTime() + (19 * 60 * 60 * 1000 + 4 * 60 * 1000 + 59 * 1000);
+            setInterval(() => {
+                let now = new Date().getTime();
+                let distance = endTime - now;
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / (1000));
+                document.getElementById("countdown").innerHTML = ${hours}h ${minutes}m ${seconds}s;
+            }, 1000);
+        }
+        startCountdown();
+    </script>
 </body>
 </html>
