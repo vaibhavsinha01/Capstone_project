@@ -4,13 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Sentiment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-section h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .news-item {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 4px solid #007bff;
+            background-color: #f1f8ff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
     <script>
         async function loadCSV(file, elementId) {
             try {
                 const response = await fetch(file);
                 const text = await response.text();
                 const rows = text.split("\n").map(row => row.trim()).filter(row => row);
-                document.getElementById(elementId).innerHTML = rows.join("<br>");
+                document.getElementById(elementId).innerHTML = rows.map(row => `<div class="news-item">${row}</div>`).join("");
             } catch (error) {
                 console.error("Error loading CSV:", error);
             }
@@ -23,12 +82,22 @@
     </script>
 </head>
 <body>
+    <h1>News Sentiment Analysis</h1>
     <p>The sentiment for the day as per the McClellan's Indicator is:</p>
-    <img src="nifty50.png">
+    <img src="nifty50.png" alt="Nifty 50 Indicator">
 
-    <p>The positive news is:</p>
-    <p id="news1"></p>
-    <p>The negative news is:</p>
-    <p id="news2"></p>
+    <div class="news-section">
+        <h2>The Positive News is:</h2>
+        <p id="news1"></p>
+    </div>
+
+    <div class="news-section">
+        <h2>The Negative News is:</h2>
+        <p id="news2"></p>
+    </div>
+
+    <footer>
+        Join us in analyzing the market sentiment for better trading decisions.
+    </footer>
 </body>
 </html>

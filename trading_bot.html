@@ -4,6 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Strategy Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #inputContainer {
+            margin: 20px auto;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    </style>
     <script>
         function showInputs(strategy) {
             let inputContainer = document.getElementById("inputContainer");
@@ -13,42 +79,49 @@
                 inputContainer.innerHTML = `
                     <label for="nCandles">Last N Candles:</label>
                     <input type="number" id="nCandles" placeholder="Enter number of candles">
-                    <br><br>
+                    <br>
                     <label for="atrMultiplier">ATR Multiplier:</label>
                     <input type="number" id="atrMultiplier" placeholder="Enter ATR multiplier">
-                    <br><br>
                 `;
             } else if (strategy === 'rsi-macd') {
                 inputContainer.innerHTML = `
                     <label for="lowRsi">Low RSI Limit:</label>
                     <input type="number" id="lowRsi" placeholder="Enter low RSI limit">
-                    <br><br>
+                    <br>
                     <label for="highRsi">High RSI Limit:</label>
                     <input type="number" id="highRsi" placeholder="Enter high RSI limit">
-                    <br><br>
+                    <br>
                     <label for="macdFast">MACD Fast Period (Default 12):</label>
                     <input type="number" id="macdFast" placeholder="Enter fast period" value="12">
-                    <br><br>
+                    <br>
                     <label for="macdSlow">MACD Slow Period (Default 26):</label>
                     <input type="number" id="macdSlow" placeholder="Enter slow period" value="26">
-                    <br><br>
+                    <br>
                     <label for="macdSignal">MACD Signal Period (Default 9):</label>
                     <input type="number" id="macdSignal" placeholder="Enter signal period" value="9">
-                    <br><br>
                 `;
             }
+        }
+
+        function starttradingbot(action) {
+            // Placeholder function for starting the trading bot
+            alert(`Trading bot action: ${action}`);
         }
     </script>
 </head>
 <body>
-    <h1>Select the trading strategy from among the two</h1>
+    <h1>Select the Trading Strategy</h1>
     <p>Supertrend - Used for trending market</p>
     <p>RSI-MACD - Used for mean-reversion based trading</p>
     <br>
-    <button onclick="showInputs('supertrend')">Supertrend</button>
-    <button onclick="showInputs('rsi-macd')">RSI-MACD</button>
-    <br><br>
+    <div style="text-align: center;">
+        <button onclick="showInputs('supertrend')">Supertrend</button>
+        <button onclick="showInputs('rsi-macd')">RSI-MACD</button>
+    </div>
+    <br>
     <div id="inputContainer"></div>
-    <button onclick="starttradingbot('start')">Start-Bot</button>
+    <div style="text-align: center;">
+        <button onclick="starttradingbot('start')">Start Bot</button>
+    </div>
 </body>
 </html>
