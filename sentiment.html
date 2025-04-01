@@ -79,12 +79,46 @@
             loadCSV("positive_news.csv", "news1");
             loadCSV("negative_news.csv", "news2");
         });
+
+        function showSelectedGraph() {
+            // Hide all images by default
+            document.getElementById("nifty50").style.display = "none";
+            document.getElementById("sbin").style.display = "none";
+            document.getElementById("reliance").style.display = "none";
+            document.getElementById("tcs").style.display = "none";
+            
+            // Get the selected value from the dropdown
+            const selectedStock = document.getElementById("stock-selector").value;
+
+            // Show the image based on the selection
+            if (selectedStock === "market") {
+                document.getElementById("nifty50").style.display = "block";
+            } else if (selectedStock === "sbin") {
+                document.getElementById("sbin").style.display = "block";
+            } else if (selectedStock === "reliance") {
+                document.getElementById("reliance").style.display = "block";
+            } else if (selectedStock === "tcs") {
+                document.getElementById("tcs").style.display = "block";
+            }
+        }
     </script>
 </head>
 <body>
+    <select id="stock-selector" onchange="showSelectedGraph()">
+        <option value="market">Overall</option>
+        <option value="sbin">Reliance</option>
+        <option value="sbin">Sbin</option>
+        <option value="tcs">Tcs</option>
+    </select>
+
     <h1>News Sentiment Analysis</h1>
     <p>The sentiment for the day as per the McClellan's Indicator is:</p>
-    <img src="nifty50.png" alt="Nifty 50 Indicator">
+
+    <!-- Initially hide all images -->
+    <img id="nifty50" src="nifty50.png" alt="Nifty 50 Indicator" style="display: none;">
+    <img id="sbin" src="sbin.png" alt="Sbin Indicator" style="display: none;">
+    <img id="reliance" src="reliance.png" alt="Reliance Indicator" style="display: none;">
+    <img id="tcs" src="tcs.png" alt="Tcs Indicator" style="display: none;">
 
     <div class="news-section">
         <h2>The Positive News is:</h2>
