@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #007BFF;
+        }
+
+        /* Acknowledgment Section */
+        .acknowledgment {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .acknowledgment input {
+            margin-right: 10px;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Subscription Form */
+        .subscription-form {
+            margin-top: 40px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - Terms of Service</div>
+    
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <!-- Terms of Service Section -->
+    <div class="content">
+        <h2>Terms of Service</h2>
+        <p>Welcome to Stock Gateway! By using our platform, you agree to the following terms and conditions.</p>
+
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing and using the services provided by Stock Gateway, you agree to comply with these terms and conditions. If you do not agree, please refrain from using our platform.</p>
+
+        <h3>2. Services Provided</h3>
+        <p>Stock Gateway provides tools for stock market analysis, including technical and fundamental analysis, real-time market data, and trading automation.</p>
+
+        <h3>3. User Responsibilities</h3>
+        <p>You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree not to misuse the platform or engage in illegal activities.</p>
+
+        <h3>4. Privacy Policy</h3>
+        <p>Your privacy is important to us. We collect and store data in accordance with our Privacy Policy, which you can review separately.</p>
+
+        <h3>5. Limitation of Liability</h3>
+        <p>Stock Gateway is not responsible for any losses or damages arising from the use of our platform. We provide services as-is, with no warranty or guarantee of accuracy.</p>
+
+        <h3>6. Modifications to Terms</h3>
+        <p>Stock Gateway reserves the right to modify these terms at any time. We will notify you of any significant changes through our platform.</p>
+
+        <h3>7. Governing Law</h3>
+        <p>These terms are governed by the laws of the jurisdiction where Stock Gateway is based.</p>
+
+        <!-- Acknowledgment Checkbox -->
+        <div class="acknowledgment">
+            <input type="checkbox" id="acceptTerms"> I agree to the Terms of Service
+        </div>
+        
+        <button id="acceptBtn" class="btn" disabled>Accept Terms</button>
+
+        <p>For any inquiries or concerns, please contact us via email or phone.</p>
+
+        <!-- Back to Home Button -->
+        <button onclick="window.location.href='index.html'" class="btn">Back to Home</button>
+    </div>
+
+    <!-- Email Subscription Form -->
+    <div class="subscription-form">
+        <h3>Stay Updated</h3>
+        <p>Subscribe to our newsletter for the latest stock market news and updates.</p>
+        <div class="form-group">
+            <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <button class="btn" id="subscribeBtn">Subscribe</button>
+    </div>
+
+    <script>
+        // Enable the "Accept Terms" button when the checkbox is clicked
+        document.getElementById('acceptTerms').addEventListener('change', function() {
+            document.getElementById('acceptBtn').disabled = !this.checked;
+        });
+
+        // Subscription form submission
+        document.getElementById('subscribeBtn').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                alert("Subscribed successfully! You will receive updates on your email.");
+                document.getElementById('email').value = ''; // Reset input field
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        });
+
+        // Accept Terms button functionality
+        document.getElementById('acceptBtn').addEventListener('click', function() {
+            alert("Thank you for accepting our Terms of Service.");
+        });
+    </script>
+
+</body>
+</html>

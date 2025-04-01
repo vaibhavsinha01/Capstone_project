@@ -3,99 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Stock_gateway</title>
+    <title>About Us - Stock Gateway</title>
     <style>
         body {
-            font-family:  sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #E6E6FA;
-          
-            padding: 20px 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        
-        #About {
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
             font-size: 2em;
-            text-align: center;
-            color: rgb(255, 255, 255);
-            padding: 5px 2px;
-            background: url('data:image/jpeg;base64,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') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 70px;
-            width: 500px;
+            font-weight: bold;
+            color: white;
         }
-        
-        h1 {
-            font-family: 'Georgia', serif;
-            color: #333;
-            text-align: center;
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
         }
-        
-        p {
-            font-family:  sans-serif;
-            color: #555;
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #fff;
             margin-bottom: 15px;
-            font-size: 18px;
         }
-        
-        .founder, .founder1 {
-            font-family: 'Courier New', monospace;
-            margin: 10px 0;
+
+        .founder {
             font-style: italic;
+            margin: 20px 0;
+            position: relative;
         }
-        
-        .founder1 {
-            text-decoration: underline;
-        }
-        
-        .service, .service1 {
-            background-color: #e2e2e2;
+
+        .founder-info {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #007BFF;
+            color: #fff;
             padding: 10px;
             border-radius: 5px;
-            margin: 10px 0;
-            font-family:  sans-serif;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .founder:hover .founder-info {
+            display: block;
+        }
+
+        .founder-info a {
+            color: #fff;
+            text-decoration: none;
             font-weight: bold;
         }
-        
+
+        .founder-info a:hover {
+            text-decoration: underline;
+        }
+
         .services-list {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .service {
+            background: #346cc0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .service:hover {
+            background-color: #cd0000;
+        }
+
+        /* Subscription Form Section */
+        .subscription-form {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .testimonial-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 900px;
+        }
+
+        .testimonial-item {
+            font-size: 1.1em;
+            color: #fff;
+            font-style: italic;
             margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        .faq-section {
+            background-color: #1e1e1e;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 900px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .faq-answer {
+            display: none;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .founder-info {
+                width: 90%;
+            }
+
+            .subscription-form {
+                width: 90%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1 id="About">About Us...</h1>
-    </div>
+
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - About Us</div>
     
-    <div class="service1">
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="content">
         <p>
-            Welcome to Stock_gateway, a cutting-edge platform designed to revolutionize the way traders and investors approach stock market analysis.<br><br>
-            Founded by <span class="founder1">Sarthak Mishra</span>, <span class="founder1">Vaibhav Sinha</span>, and <span class="founder1">Om Srivastava</span>, our mission is to provide a seamless and data-driven experience for analyzing stocks using a combination of fundamental and technical analysis. 
-            With a strong foundation in financial technologies, we leverage mathematical indicators, algorithmic trading bots, and real-time news integration to enhance decision-making in the stock market.<br><br>
-            Our approach is rooted in quantitative finance, data science, and algorithmic trading, ensuring that users have access to reliable, data-backed insights. Whether you're a retail investor, a day trader, or a professional in the financial sector, our platform will empower you with tools that simplify market trends, forecast price movements, and optimize trading strategies.
+            Stock Gateway is a cutting-edge platform revolutionizing stock market analysis with data-driven insights.
+            Founded by <strong>Sarthak Mishra</strong>, <strong>Vaibhav Sinha</strong>, and <strong>Om Srivastava</strong>,
+            our goal is to provide traders with advanced financial tools for better decision-making.
         </p>
+        
+        <h2>Meet the Founders</h2>
+        <div class="founder">🔹 Sarthak Mishra - Financial analyst specializing in market research and investment strategies.
+            <div class="founder-info">
+                <a href="mailto:sarthak7527@gmail.com">Email: sarthak7527@gmail.com</a><br>
+                <a href="tel:+919305867754">Phone: 9305867754</a>
+            </div>
+        </div>
+        <br>
+        <div class="founder">🔹 Vaibhav Sinha - Quant developer with expertise in algorithmic trading and data science.
+            <div class="founder-info">
+                <a href="mailto:vaibhavrajsinha125@gmail.com">Email: vaibhavrajsinha125@gmail.com</a><br>
+                <a href="tel:+919354939061">Phone: 9354939061</a>
+            </div>
+        </div>
+        <br>
+        <div class="founder">🔹 Om Srivastava - AI engineer focusing on platform development and seamless integration of analytics tools.
+            <div class="founder-info">
+                <a href="mailto:srivastavaom078@gmail.com">Email: srivastavaom078@gmail.com</a><br>
+                <a href="tel:+917307826563">Phone: 7307826563</a>
+            </div>
+        </div>
+        <br>
+        <h2>What We Offer</h2>
+        <div class="services-list">
+            <div class="service">✅ <strong>Technical Analysis Tools</strong>: Utilize advanced indicators like RSI, MACD, Bollinger Bands, and more.</div>
+            <div class="service">✅ <strong>Fundamental Analysis</strong>: Get in-depth financial reports and performance insights.</div>
+            <div class="service">✅ <strong>Algorithmic Trading</strong>: Automate trades with AI-powered bots.</div>
+            <div class="service">✅ <strong>Real-Time Market News</strong>: Stay updated with sentiment analysis and breaking news.</div>
+            <div class="service">✅ <strong>User-Friendly Platform</strong>: Designed for both beginners and professional traders.</div>
+        </div>
+        
+        <p>At Stock Gateway, we empower traders with technology-driven insights to optimize market strategies.</p>
     </div>
-    
-    <strong>Meet the Founders</strong><br><br>
-    <div class="founder">🔹 Sarthak Mishra - Expert in financial analysis and market research, with a deep understanding of both fundamental and technical analysis. Passionate about building innovative tools for traders.</div>
-    <div class="founder">🔹 Vaibhav Sinha - A quant developer specializing in algorithmic trading and financial technologies. With expertise in data science and machine learning, he focuses on optimizing trading strategies.</div>
-    <div class="founder">🔹 Om Srivastava - A skilled software engineer with a strong background in AI-driven trading systems. He ensures seamless platform development and integration of advanced features.</div>
-    
-    <br>
-    Together, we are committed to making Stock_gateway a leading destination for stock market enthusiasts, traders, and financial professionals.
-    <br><br>
-    
-    <div class="services-list">
-        <strong>What We Offer:</strong><br><br>
-        <div class="service">✅ Technical Analysis Tools: Leverage powerful mathematical indicators, such as moving averages, RSI, MACD, Bollinger Bands, and more, to understand market trends and make informed decisions.</div>
-        <div class="service">✅ Fundamental Analysis Insights: Get comprehensive reports on company financials, earnings reports, and key performance indicators to assess the intrinsic value of stocks.</div>
-        <div class="service">✅ Algorithmic Trading Bots: Automate your trading strategies using our advanced algo-trading bots that execute trades based on predefined market conditions.</div>
-        <div class="service">✅ Real-Time Market News & Sentiment Analysis: Stay updated with live market news, sentiment analysis, and breaking developments that impact stock prices.</div>
-        <div class="service">✅ User-Friendly Interface: Our intuitive and easy-to-use platform caters to both beginners and experienced traders, providing a smooth trading experience.</div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonial-container">
+        <h2>What Our Users Say</h2>
+        <div id="testimonialCarousel">
+            <div class="testimonial-item">
+                "Stock Gateway has transformed my trading strategy. The tools provided are incredibly powerful."
+                <div class="testimonial-author">- Rajesh Kumar, Professional Trader</div>
+            </div>
+            <div class="testimonial-item">
+                "I love the AI-driven insights. It helps me stay ahead of the market every day!"
+                <div class="testimonial-author">- Priya Sharma, Investor</div>
+            </div>
+            <div class="testimonial-item">
+                "The real-time news section is always on point, providing the information I need instantly."
+                <div class="testimonial-author">- Amit Yadav, Day Trader</div>
+            </div>
+        </div>
     </div>
-    
-    <p>At Stock_gateway, we believe in data-driven decision-making and aim to bridge the gap between technology and finance, empowering users with cutting-edge analytical tools.</p>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-question" onclick="toggleFAQ(0)">What is Stock Gateway?</div>
+        <div class="faq-answer" id="faqAnswer0">
+            Stock Gateway is a platform that provides advanced stock market analysis, trading tools, and data insights to help traders make informed decisions.
+        </div>
+        <div class="faq-question" onclick="toggleFAQ(1)">How does the AI trading bot work?</div>
+        <div class="faq-answer" id="faqAnswer1">
+            Our AI bot analyzes market trends and executes trades based on pre-set parameters, making trading more efficient.
+        </div>
+        <div class="faq-question" onclick="toggleFAQ(2)">Can I try Stock Gateway for free?</div>
+        <div class="faq-answer" id="faqAnswer2">
+            Yes, we offer a 7-day free trial to explore all the features of Stock Gateway before committing to a subscription.
+        </div>
+    </div>
+
+    <!-- Email Subscription Form -->
+    <div class="subscription-form">
+        <h3>Stay Updated</h3>
+        <p>Subscribe to our newsletter for the latest stock market news and updates.</p>
+        <form action="#">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <script>
+        // FAQ Toggle Functionality
+        function toggleFAQ(id) {
+            const answer = document.getElementById('faqAnswer' + id);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
 </body>
 </html>
