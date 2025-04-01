@@ -3,185 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Analysis Portal</title>
+    <title>INO8TORS Trading Website</title>
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('https://wallpapers.com/images/hd/stock-market-drastic-market-movement-baglidta60etpuu7.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: rgb(255, 255, 255);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: rgba(123, 141, 213, 0.6);
-            animation: fadeIn 1.5s ease-in-out, navbarMove 3s ease-in-out infinite alternate;
-        }
-        @keyframes navbarMove {
-            0% { transform: translateX(-5px); }
-            100% { transform: translateX(5px); }
-        }
-        .navbar a {
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-        .navbar a:hover {
-            color: #ff7214;
-        }
-        .banner {
-            text-align: center;
-            padding: 40px;
-            background: rgba(59, 28, 105, 0.6);
-            animation: slideIn 1.5s ease-in-out, bannerMove 5s ease-in-out infinite alternate;
-        }
-        @keyframes bannerMove {
-            0% { transform: translateY(-10px); }
-            100% { transform: translateY(10px); }
-        }
-        .banner h1 {
-            font-size: 40px;
-        }
-        .countdown {
-            font-size: 20px;
-            margin-top: 20px;
-        }
-        .search-bar {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .search-bar input {
-            padding: 10px;
-            width: 300px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: none;
-        }
-        @keyframes searchBarMove {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-        .stock-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .stock-box {
-            background: rgba(43, 1, 140, 0.725);
-            padding: 15px;
-            border-radius: 9px;
-            text-align: center;
-            width: 150px;
-            
-            
-        }
-        @keyframes stockBoxMove {
-            0% { transform: translateY(-10px); }
-            100% { transform: translateY(10px); }
-        }
-        .stock-box:hover {
-            transform: scale(1.05);
-        }
-        .login-btn {
-            background: #ff6600;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0); }
-        }
-        .login-btn:hover {
-            background-color: #e65c00;
-        }
-        .footer {
-            text-align: left;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 6; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        font-family: 'Poppins', sans-serif;
+        background: #000;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 10%;
+        background: rgba(20, 20, 20, 0.9);
+    }
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    /* Search Bar */
+    .search-bar {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+    
+    .search-bar input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+    }
+    
+    /* Header Buttons */
+    .header-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .btn-glow {
+        background: linear-gradient(90deg, #00d4ff, #8600ff);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 0.3s;
+        box-shadow: 0 0 10px #00d4ff;
+    }
+    
+    .btn-glow:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 20px #00d4ff;
+    }
+    
+    /* Navigation Menu */
+    .navigation {
+        display: flex;
+        justify-content: center;
+        padding: 15px 10%;
+        background: rgba(30, 30, 30, 1);
+    }
+    
+    .nav-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+    }
+    
+    .nav-btn.active, .nav-btn:hover {
+        background: #555;
+        border-radius: 15px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 100px 10%;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+    
+    .subtext {
+        font-size: 0.9rem;
+        color: #aaa;
+        margin-top: 5px;
+    }
+    
+    /* Trading Statistics Section */
+    .stats {
+        text-align: center;
+        padding: 50px 10%;
+    }
+    
+    .stats-container {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .stat h3 {
+        font-size: 2rem;
+        color: #00d4ff;
+    }
+    
+    .hashtag {
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #00d4ff, #8600ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+    }
+    
+    /* Footer */
+    footer {
+        background: #000;
+        padding: 50px 10%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .footer-logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .footer-links div {
+        margin: 20px;
+    }
+    
+    .footer-links h4 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-links ul li {
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        font-size: 1.5rem;
+        margin: 20px 0;
+    }
+    
+    footer p {
+        text-align: center;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    /* Image Section */
+    .custom-image {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .custom-image img {
+        width: 80%;
+        max-width: 800px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .custom-image img:hover {
+        transform: scale(1.05);
+    }
+    
+    .image-container img {
+        width: 100%; /* Ensures the image spans the entire width */
+        display: block; /* Removes extra space below the image */
+        margin-bottom: 20px; /* Adds space before the footer */
+    }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="https://files.oaiusercontent.com/file-LHhZvhMZKLG5uSA2dPvmLr?se=2025-02-04T17%3A35%3A47Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dbac5f25c-706b-4a83-8ee3-ba8725243fbd.webp&sig=TJHRDsjzCxgKTOQJjCSBoqnu3ngGnDUzwF0X7T4EL5o%3D" alt="Italian Trulli" height="100" width="100">
-        <div>
-            <a href="#">HOME</a>
-            <a href="trading_bot.html">TRADING BOT</a>
-            <a href="analysis.html">ANALYSIS</a>
-            <a href="sentiment.html">SENTIMENT</a>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">📈 INO8TORS</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
         </div>
-        <button class="login-btn">Login</button>
-    </div>
-    <div class="banner">
-        <h1>AN OPEN SOURCE WEBSITE FOR ANALYSIS AND TRADING</h1>
-        <div class="countdown" id="countdown"></div>
-    </div>
-    <div class="search-bar">
-        <input type="text" placeholder="Search your favorite Indices...">
-    </div>
-    <div class="stock-container">
-        <div class="stock-box">GIFT-NIFTY<br><span style="color: rgb(49, 211, 49);">23,843 ▲</span></div>
-        <div class="stock-box">NIFTY<br><span style="color: rgb(45, 187, 45);">23,739 ▲</span></div>
-        <div class="stock-box">SENSEX<br><span style="color: rgb(51, 182, 51);">78,563 ▲</span></div>
-    </div>
-    <div class="footer">
-        <div class="footer">
-            <p> Sarthak Mishra 23BDS1011
-               <br>
-               <br>
-                 Vaibhav Sinha 23BDS1026
-                 <br>
-                 <br>Om Srivastava 23BDS1006</p>
+        <div class="header-buttons">
+            <button class="btn-glow">Sign Up</button>
+            <button class="btn-glow">Log In</button>
         </div>
-        <div class="footer-links">
-            <h2>
-              <a href="contact.html" style="color: orange;">Contact Us</a> | 
-              <a href="about.html" style="color: orange;">About Us</a> | 
-              <a href="terms.html" style="color: orange;">Terms of Service</a>
-            </h2>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+        <a href="index.html"><button class="nav-btn active">HOME</button></a>
+        <a href="trading_bot.html"><button class="nav-btn">TRADING BOT</button></a>
+        <a href="analysis.html"><button class="nav-btn">ANALYSIS</button></a>
+        <a href="sentiment.html"><button class="nav-btn">SENTIMENT</button></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Look first / <br>Then leap.</h1>
+            <p>The best trades require research, then commitment.</p>
+            <button class="btn-glow">Get started for free</button>
+            <p class="subtext">$0 forever, no credit card needed</p>
+            <br>
+            <br>
+            <h3>SARTHAK MISHRA(23BDS1011)</h3> 
+            <h3>OM SRIVAASTAVA(23BDS1006)</h3>
+            <h3>VAIBHAV SINHA(23BDS1026)</h3>
+
         </div>
-        <style>
-            .footer-links {
-                background: rgba(34, 2, 56, 0.8); 
-                padding: 20px;
-                text-align: center;
-                margin-top: -20px;
-            }
-        </style>
-    </div>
-    <script>
-        function startCountdown() {
-            let endTime = new Date().getTime() + (19 * 60 * 60 * 1000 + 4 * 60 * 1000 + 59 * 1000);
-            setInterval(() => {
-                let now = new Date().getTime();
-                let distance = endTime - now;
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / (1000));
-                document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-            }, 1000);
-        }
-        startCountdown();
-    </script>
+        <div class="hero-image">
+            <img src="https://t3.ftcdn.net/jpg/06/25/84/66/360_F_625846697_fSEBOcqx78O3NpIGaJsAiOGGbuICSpNg.jpg" alt="">
+        </div>
+    </section>
+
+    <!-- Trading Statistics Section -->
+    <section class="stats">
+        <h2>Love in every <span class="hashtag">#TradingView</span></h2>
+        <div class="stats-container">
+            <div class="stat">
+                <h3>100M+</h3>
+                <p>Traders and investors use our platform...........</p>
+            </div>
+            <div class="stat">
+                <h3 class="hashtag">#1</h3>
+                <p>Top website in the world for investing insights...............</p>
+            </div>
+            <div class="stat">
+                <h3>1.5M+</h3>
+                <p>Mobile reviews with 4.9 average rating.........................</p>
+            </div>
+            <div class="stat">
+                <h3>10M+</h3>
+                <p>Custom scripts and ideas shared by users.............</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer>
+        <div class="image-container">
+            <img src="https://cdn.financialmodelingprep.com/images/research-websites-4.webp" alt="Global Stock Market by Sector">
+        </div>
+        <div class="footer-container">
+            <div class="footer-logo"></div>
+            <div class="social-icons">
+                <span>📘</span><span>📺</span><span>📷</span><span>✈</span><span>🎵</span><span>👾</span>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Products</h4>
+                    <ul>
+                        <li>Supercharts</li>
+                        <li>Pine Script®</li>
+                        <li>Stock Screener</li>
+                        <li>ETF Screener</li>
+                        <li>Crypto Coins Screener</li>
+                        <li>Economic Calendar</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li>About</li>
+                        <li>Features</li>
+                        <li>Pricing</li>
+                        <li>Social Network</li>
+                        <li>Careers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li>Refer a Friend</li>
+                        <li>Ideas</li>
+                        <li>Scripts</li>
+                        <li>Moderators</li>
+                        <li>Chat</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>For Business</h4>
+                    <ul>
+                        <li>Widgets</li>
+                        <li>Advertising</li>
+                        <li>Charting Libraries</li>
+                        <li>Trading Platform</li>
+                        <li>Brokerage Integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-buttons">
+            <a href="contact.html">Contact Us</a> 
+            <a href="about.html">About Us</a> 
+            <a href="terms.html">Terms of Service</a>
+        </div>
+    </footer>
 </body>
 </html>
