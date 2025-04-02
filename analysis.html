@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,6 +121,311 @@
 </head>
 <body>
     <div class="container">
+        <h1>Stock Financial Dashboard</h1>
+        
+        <div class="stock-buttons">
+            <button class="stock-button" onclick="selectStock('NVDA')">NVDA</button>
+            <button class="stock-button" onclick="selectStock('MSFT')">MSFT</button>
+            <button class="stock-button" onclick="selectStock('META')">META</button>
+            <button class="stock-button" onclick="selectStock('TSLA')">TSLA</button>
+            <button class="stock-button" onclick="selectStock('GOOGL')">GOOGL</button>
+            <button class="stock-button" onclick="selectStock('AMZN')">AMZN</button>
+        </div>
+
+        <div class="statement-buttons" id="statementButtons">
+            <button class="statement-button" onclick="showData('financials')">Financials</button>
+            <button class="statement-button" onclick="showData('balance_sheet')">Balance Sheet</button>
+            <button class="statement-button" onclick="showData('cashflow')">Cash Flow</button>
+        </div>
+
+        <div class="data-display" id="dataDisplay">
+            <div id="tableContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedStock = null;
+
+        function selectStock(stock) {
+            // Reset active states
+            document.querySelectorAll('.stock-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Set new active state
+            event.target.classList.add('active');
+            
+            selectedStock = stock;
+            document.getElementById('statementButtons').style.display = 'grid';
+            document.getElementById('dataDisplay').style.display = 'none';
+        }
+
+        async function showData(statementType) {
+            const display = document.getElementById('dataDisplay');
+            const container = document.getElementById('tableContainer');
+            
+            display.style.display = 'block';
+            container.innerHTML = '<div class="loading">Loading data...</div>';
+
+            try {
+                // Construct the file path based on your Python code's structure
+                let fileName;
+                if (statementType === 'financials') {
+                    fileName = `${selectedStock}_financials.csv`; // Corrected from _financials to _financial
+                } else if (statementType === 'balance_sheet') {
+                    fileName = `${selectedStock}_balance_sheet.csv`;
+                } else {
+                    fileName = `${selectedStock}_cashflow.csv`;
+                }
+
+                const response = await fetch(`data/${fileName}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
+
+                const csvText = await response.text();
+                const rows = csvText.split('\n');
+                const headers = rows[0].split(',');
+
+                let table = '<table><thead><tr>';
+                // Skip the first column if it's an index
+                for (let i = 1; i < headers.length; i++) {
+                    table += `<th>${headers[i].replace(/["]/g, '')}</th>`;
+                }
+                table += '</tr></thead><tbody>';
+
+                // Start from row 1 to skip header
+                for (let i = 1; i < rows.length; i++) {
+                    if (rows[i].trim() === '') continue;
+                    
+                    const columns = rows[i].split(',');
+                    table += '<tr>';
+                    // Skip the first column if it's an index
+                    for (let j = 1; j < columns.length; j++) {
+                        let value = columns[j].replace(/["]/g, '');
+                        // Format numbers with commas
+                        if (!isNaN(value) && value !== '') {
+                            value = Number(parseFloat(value)).toLocaleString();
+                        }
+                        table += `<td>${value}</td>`;
+                    }
+                    table += '</tr>';
+                }
+
+                table += '</tbody></table>';
+                container.innerHTML = table;
+
+            } catch (error) {
+                container.innerHTML = `<div class="error">Error loading data: ${error.message}</div>`;
+            }
+        }
+
+        // Initialize
+        document.getElementById('statementButtons').style.display = 'none';
+        document.getElementById('dataDisplay').style.display = 'none';
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Financial Dashboard - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stock-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stock-button {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .stock-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .stock-button.active {
+            background-color: #004080;
+        }
+
+        .statement-buttons {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .statement-button {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #346cc0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .statement-button:hover {
+            background-color: #285091;
+        }
+
+        .data-display {
+            display: none;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #1a1a1a;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background-color: #333;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .error {
+            color: #ff6b6b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .stock-buttons, .statement-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stock-buttons, .statement-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - Financial Dashboard</div>
+    
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <div class="content">
         <h1>Stock Financial Dashboard</h1>
         
         <div class="stock-buttons">
