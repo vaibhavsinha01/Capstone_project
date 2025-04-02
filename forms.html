@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        /* Login Form */
+        .login-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 400px;
+            margin: 40px auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+
+        .forgot-password {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .alternate-login {
+            margin-top: 25px;
+            position: relative;
+            text-align: center;
+        }
+
+        .alternate-login::before {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: #444;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+        }
+
+        .alternate-login span {
+            background-color: #1e1e1e;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+            color: #888;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2a2a2a;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #333;
+        }
+
+        .google-btn {
+            background-color: #DB4437;
+        }
+
+        .google-btn:hover {
+            background-color: #c13b2f;
+        }
+
+        .facebook-btn {
+            background-color: #4267B2;
+        }
+
+        .facebook-btn:hover {
+            background-color: #375694;
+        }
+
+        .twitter-btn {
+            background-color: #1DA1F2;
+        }
+
+        .twitter-btn:hover {
+            background-color: #1a91da;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+        }
+
+        .signup-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - Login</div>
+    
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <div class="content">
+        <h2>Welcome Back to Stock Gateway</h2>
+        <p>Log in to access advanced stock market analysis tools, real-time data, and AI-powered insights.</p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            
+            <button type="submit" class="submit-btn">Login</button>
+            
+            <div class="alternate-login">
+                <span>Or login with</span>
+            </div>
+            
+            <div class="social-login">
+                <a href="#" class="social-btn google-btn" title="Login with Google">G</a>
+                <a href="#" class="social-btn facebook-btn" title="Login with Facebook">f</a>
+                <a href="#" class="social-btn twitter-btn" title="Login with Twitter">t</a>
+            </div>
+            
+            <div class="signup-link">
+                Don't have an account? <a href="#">Sign up here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Form validation
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert("Please fill in all fields");
+                return false;
+            }
+            
+            // Here you would normally send the data to your server
+            // For this demo, we'll just show a success message
+            alert("Login successful! Redirecting to dashboard...");
+        });
+    </script>
+
+</body>
+</html>

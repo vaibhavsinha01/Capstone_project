@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        /* Signup Form */
+        .signup-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .login-link {
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .plans-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .plan-card {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            width: 30%;
+            min-width: 200px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .plan-title {
+            color: #007BFF;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 1.8em;
+            margin: 15px 0;
+        }
+
+        .plan-features {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .plan-feature {
+            margin: 8px 0;
+        }
+
+        .plan-select {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .plan-select:hover {
+            background-color: #0056b3;
+        }
+
+        .premium-plan {
+            border: 2px solid #007BFF;
+            position: relative;
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #cd0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .signup-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .plan-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - Sign Up</div>
+    
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <!-- Signup Section -->
+    <div class="content">
+        <h2>Join Stock Gateway Today</h2>
+        <p>Create your account and get access to advanced stock market analysis tools, real-time data, and AI-powered insights.</p>
+    </div>
+
+    <!-- Subscription Plans -->
+    <div class="content">
+        <h2>Choose Your Plan</h2>
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="plan-title">Basic</div>
+                <div class="plan-price">₹999/month</div>
+                <div class="plan-features">
+                    <div class="plan-feature">✅ Technical Analysis Tools</div>
+                    <div class="plan-feature">✅ Real-Time Market News</div>
+                    <div class="plan-feature">✅ Basic Stock Screener</div>
+                    <div class="plan-feature">❌ AI Trading Bots</div>
+                    <div class="plan-feature">❌ Advanced Algorithms</div>
+                </div>
+                <button class="plan-select" onclick="selectPlan('Basic')">Select Plan</button>
+            </div>
+            
+            <div class="plan-card premium-plan">
+                <div class="premium-badge">POPULAR</div>
+                <div class="plan-title">Premium</div>
+                <div class="plan-price">₹2499/month</div>
+                <div class="plan-features">
+                    <div class="plan-feature">✅ All Basic Features</div>
+                    <div class="plan-feature">✅ AI Trading Bots</div>
+                    <div class="plan-feature">✅ Advanced Analytics</div>
+                    <div class="plan-feature">✅ Portfolio Management</div>
+                    <div class="plan-feature">❌ Custom Algorithms</div>
+                </div>
+                <button class="plan-select" onclick="selectPlan('Premium')">Select Plan</button>
+            </div>
+            
+            <div class="plan-card">
+                <div class="plan-title">Enterprise</div>
+                <div class="plan-price">₹4999/month</div>
+                <div class="plan-features">
+                    <div class="plan-feature">✅ All Premium Features</div>
+                    <div class="plan-feature">✅ Custom Algorithms</div>
+                    <div class="plan-feature">✅ API Access</div>
+                    <div class="plan-feature">✅ Dedicated Support</div>
+                    <div class="plan-feature">✅ Strategy Backtesting</div>
+                </div>
+                <button class="plan-select" onclick="selectPlan('Enterprise')">Select Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tradingExperience">Trading Experience</label>
+                <select id="tradingExperience" name="tradingExperience">
+                    <option value="beginner">Beginner (0-1 years)</option>
+                    <option value="intermediate">Intermediate (1-3 years)</option>
+                    <option value="advanced">Advanced (3-5 years)</option>
+                    <option value="expert">Expert (5+ years)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="plan">Selected Plan</label>
+                <input type="text" id="plan" name="plan" readonly value="Premium">
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to newsletter for market updates</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Create Account</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="#">Log in here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function selectPlan(planName) {
+            document.getElementById('plan').value = planName;
+            
+            // Scroll to signup form
+            document.querySelector('.signup-container').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Form validation
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert("Passwords don't match!");
+                return false;
+            }
+            
+            alert("Account created successfully! Welcome to Stock Gateway.");
+        });
+    </script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -123,5 +123,235 @@
     <div style="text-align: center;">
         <button onclick="starttradingbot('start')">Start Bot</button>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Strategy Selector - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000000;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Stock Ticker */
+        .stock-ticker {
+            background-color: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: #ccc;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #inputContainer {
+            margin: 20px auto;
+            max-width: 400px;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .start-btn {
+            background-color: #28a745;
+            padding: 12px 30px;
+            font-size: 18px;
+        }
+
+        .start-btn:hover {
+            background-color: #218838;
+        }
+
+        .strategy-btn {
+            background-color: #346cc0;
+            transition: background-color 0.3s;
+        }
+
+        .strategy-btn:hover {
+            background-color: #285091;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5em;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            #inputContainer {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+    </style>
+    <script>
+        function showInputs(strategy) {
+            let inputContainer = document.getElementById("inputContainer");
+            inputContainer.innerHTML = ""; // Clear previous inputs
+            
+            if (strategy === 'supertrend') {
+                inputContainer.innerHTML = `
+                    <label for="nCandles">Last N Candles:</label>
+                    <input type="number" id="nCandles" placeholder="Enter number of candles">
+                    <br>
+                    <label for="atrMultiplier">ATR Multiplier:</label>
+                    <input type="number" id="atrMultiplier" placeholder="Enter ATR multiplier">
+                `;
+            } else if (strategy === 'rsi-macd') {
+                inputContainer.innerHTML = `
+                    <label for="lowRsi">Low RSI Limit:</label>
+                    <input type="number" id="lowRsi" placeholder="Enter low RSI limit">
+                    <br>
+                    <label for="highRsi">High RSI Limit:</label>
+                    <input type="number" id="highRsi" placeholder="Enter high RSI limit">
+                    <br>
+                    <label for="macdFast">MACD Fast Period (Default 12):</label>
+                    <input type="number" id="macdFast" placeholder="Enter fast period" value="12">
+                    <br>
+                    <label for="macdSlow">MACD Slow Period (Default 26):</label>
+                    <input type="number" id="macdSlow" placeholder="Enter slow period" value="26">
+                    <br>
+                    <label for="macdSignal">MACD Signal Period (Default 9):</label>
+                    <input type="number" id="macdSignal" placeholder="Enter signal period" value="9">
+                `;
+            }
+        }
+
+        function starttradingbot(action) {
+            // Placeholder function for starting the trading bot
+            alert(`Trading bot action: ${action}`);
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">Stock Gateway - Trading Strategy</div>
+    
+    <!-- Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-content">
+            NIFTY 50: 22,300 ▲ 1.2% | SENSEX: 73,500 ▲ 0.8% | TCS: 3,850 ▼ 0.5%
+        </div>
+    </div>
+
+    <!-- Strategy Selector Content -->
+    <div class="content">
+        <h1>Select the Trading Strategy</h1>
+        <p>Supertrend - Used for trending market</p>
+        <p>RSI-MACD - Used for mean-reversion based trading</p>
+        <br>
+        <div>
+            <button class="strategy-btn" onclick="showInputs('supertrend')">Supertrend</button>
+            <button class="strategy-btn" onclick="showInputs('rsi-macd')">RSI-MACD</button>
+        </div>
+        <br>
+        <div id="inputContainer"></div>
+        <div class="button-container">
+            <button class="start-btn" onclick="starttradingbot('start')">Start Bot</button>
+        </div>
+    </div>
+
 </body>
 </html>
