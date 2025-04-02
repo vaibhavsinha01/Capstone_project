@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -154,7 +154,6 @@
         </form>
     </div>
 
-    <!-- Chatbot -->
     <div class="chatbot-container" id="chatbot">
         <div class="chatbot-header">Chat with us</div>
         <div class="chatbox" id="chatbox"></div>
@@ -206,6 +205,250 @@
                 setTimeout(() => {
                     let botMessage = "I'm sorry, I didn't quite understand that.";
                     chatbox.innerHTML += <div class="bot-message">${botMessage}</div>;
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Stock Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: #1e1e1e;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .stock-ticker {
+            background: #007BFF;
+            padding: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 5s alternate-reverse infinite;
+        }
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .contact-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn {
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            padding: 20px;
+            display: none;
+        }
+        .chatbot-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #fff;
+        }
+        .chatbox {
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+            text-align: left;
+        }
+        .user-message {
+            background-color: #007BFF;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #444;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .chat-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: none;
+        }
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+        }
+        
+        /* Donation section */
+        .donation-section {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        .donation-section img {
+            max-width: 200px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+        }
+        .donation-text {
+            font-size: 18px;
+            color: #fff;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Stock Gateway - Contact Us</div>
+    <div class="stock-ticker">
+        <div class="ticker-content" id="ticker">Loading stock data...</div>
+    </div>
+    
+    <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>Have questions? Contact us below.</p>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Donation Section -->
+    <div class="donation-section">
+        <h2>Support Our Cause</h2>
+        <img src="qr.jpg" alt="Donation QR Code">
+        <p class="donation-text">Please donate to help the poor.</p>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">Chat with us</div>
+        <div class="chatbox" id="chatbox"></div>
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type a message...">
+    </div>
+    
+    <div class="chatbot-toggle" id="chatbotToggle">💬</div>
+
+    <script>
+        // Update stock ticker content every 3 seconds
+        function updateStockTicker() {
+            const stocks = [
+                "NIFTY 50: 22,350 ▲ 1.1%", 
+                "SENSEX: 73,600 ▲ 0.9%", 
+                "TCS: 3,860 ▼ 0.3%", 
+                "INFY: 1,560 ▲ 0.4%", 
+                "RELIANCE: 2,800 ▲ 1.2%", 
+                "HDFC BANK: 1,520 ▼ 0.5%"
+            ];
+            document.getElementById("ticker").innerText = stocks[Math.floor(Math.random() * stocks.length)];
+        }
+        setInterval(updateStockTicker, 3000);
+        updateStockTicker();
+
+        // Contact form submission
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Message sent successfully!");
+        });
+
+        // Chatbot functionality
+        const chatbot = document.getElementById('chatbot');
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbox = document.getElementById('chatbox');
+        const chatInput = document.getElementById('chatInput');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+                let userMessage = chatInput.value.trim();
+                chatbox.innerHTML += `<div class="user-message">${userMessage}</div>`;
+                chatInput.value = '';
+                chatbox.scrollTop = chatbox.scrollHeight;
+
+                // Simulating bot response
+                setTimeout(() => {
+                    let botMessage = "I'm sorry, I didn't quite understand that.";
+                    chatbox.innerHTML += `<div class="bot-message">${botMessage}</div>`;
                     chatbox.scrollTop = chatbox.scrollHeight;
                 }, 1000);
             }
